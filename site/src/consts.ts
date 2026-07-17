@@ -63,7 +63,7 @@ export type NavItem = {
 
 /** Mirrors the gsuair.com menu exactly — same items, same labels, same order. */
 export const NAV: NavItem[] = [
-  { label: 'Home', href: '/' },
+  { label: 'HOME', href: '/' },
   { label: 'PRODUCTS', href: '/products' },
   { label: 'TECHNOLOGY', href: '/technology' },
   {
@@ -83,7 +83,7 @@ export const NAV: NavItem[] = [
     href: '/articles',
     children: [{ label: 'ARTICLES', href: '/articles' }],
   },
-  { label: 'Funding', href: '/funding' },
+  { label: 'FUNDING', href: '/funding' },
   {
     label: 'ABOUT',
     href: '/about-us',
