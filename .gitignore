@@ -25,3 +25,5 @@ site/shots.mjs
 site/logocheck.mjs
 gsuair/gsuair-assets/contact-sheet.png
 gsuair/gsuair-assets/*.txt
+
+.vercel

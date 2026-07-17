@@ -1,5 +1,6 @@
 ---
 import { statSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
@@ -65,10 +66,15 @@ const articles: Article[] = [
   },
 ];
 
-/** Read real file sizes at build time so the labels can never go stale. */
+/**
+ * Read real file sizes at build time so the labels can never go stale.
+ * Resolved relative to this module, not to cwd — a CI host may run the build
+ * from the repo root rather than from site/, which would silently drop every size.
+ */
 const sizeOf = (file: string) => {
   try {
-    const bytes = statSync(`public/pdfs/${decodeURIComponent(file)}`).size;
+    const path = fileURLToPath(new URL(`../../public/pdfs/${decodeURIComponent(file)}`, import.meta.url));
+    const bytes = statSync(path).size;
     return bytes > 1048576 ? `${(bytes / 1048576).toFixed(1)} MB` : `${Math.round(bytes / 1024)} KB`;
   } catch {
     return null;
