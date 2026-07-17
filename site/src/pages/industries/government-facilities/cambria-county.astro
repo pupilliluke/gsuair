@@ -1,84 +1,72 @@
 ---
-import { Image } from 'astro:assets';
 import Base from '../../../layouts/Base.astro';
 import PageHero from '../../../components/PageHero.astro';
 import Section from '../../../components/Section.astro';
-import CallToAction from '../../../components/CallToAction.astro';
 
 import cambriaHero from '../../../assets/cambria-hero.jpg';
-import iaqDashboard from '../../../assets/iaq-360-dashboard.png';
+
+/*
+ * 1:1 reproduction of the live gsuair.com/cambria-county-gov page: same
+ * headings, same copy, same order — nothing added, nothing removed.
+ *
+ * Copy is verbatim, including the live page's own quirks: it calls the company
+ * "Germ Solution Service USA" throughout (not "Germ Solutions USA"), it leaves
+ * in the drafting aside "Here's a detailed breakdown based on the provided
+ * information:", and the closing paragraph has no full stop.
+ */
 ---
 
 <Base
-  title="Case Study: Lehigh, York & Cambria County Correctional Facilities"
-  description="How Germ Solutions USA installed InductPro air and surface purification and IAQ 360 monitoring across three Pennsylvania correctional facilities."
+  title="Lehigh, York, & Cambria Counties' Correctional Facilities"
+  description="PA prison facilities find solution for their poor indoor air quality — InductPro Series purification and Indoor Air Quality Monitoring System 360 across three county correctional facilities."
 >
   <PageHero
-    eyebrow="Case study"
-    title="Lehigh, York & Cambria Counties' correctional facilities"
-    lead="PA prison facilities find a solution for their poor indoor air quality."
+    title="LEHIGH, YORK, & CAMBRIA COUNTIES' CORRECTIONAL FACILITIES"
     image={cambriaHero}
     imageAlt="Interior of a correctional facility"
   />
 
-  <Section>
-    <div class="mx-auto max-w-3xl">
-      <p class="text-lg leading-relaxed text-slate-600">
-        Germ Solutions USA has taken significant steps to enhance safety measures within the prison facilities of
-        Lehigh, York and Cambria Counties in Pennsylvania.
+  <Section tone="tint" title="PA PRISON FACILITIES FIND SOLUTION FOR THEIR POOR INDOOR AIR QUALITY">
+    <div class="mt-8 max-w-3xl">
+      <p class="text-lg leading-relaxed text-slate-700">
+        Germ Solution Service USA has taken significant steps to enhance safety measures within the prison facilities of
+        Lehigh, York , and Cambria Counties in Pennsylvania. Here's a detailed breakdown based on the provided
+        information:
       </p>
-
-      <div class="mt-14 space-y-14">
-        <article>
-          <h2 class="text-2xl font-bold tracking-tight text-brand-800 text-balance">
-            Installation of air &amp; surface purification systems
-          </h2>
-          <p class="mt-4 leading-relaxed text-slate-600">
-            Germ Solutions USA installed InductPro Series devices within the ductwork of the facilities. These devices
-            release molecules that actively target and disable COVID-19 and other pathogens in the air and on surfaces,
-            integrating into the existing infrastructure to create a safer environment for staff, inmates and visitors.
-          </p>
-        </article>
-
-        <article>
-          <h2 class="text-2xl font-bold tracking-tight text-brand-800 text-balance">
-            Implementation of Indoor Air Quality Monitoring System 360
-          </h2>
-          <p class="mt-4 leading-relaxed text-slate-600">
-            The IAQ 360 system enables prison administrators to continuously monitor air quality in real time, allowing
-            early detection of issues and prompt action.
-          </p>
-          <Image
-            src={iaqDashboard}
-            alt="IAQ 360 monitoring dashboard showing real-time air quality readings alongside its sensor unit"
-            widths={[400, 800, 1400]}
-            sizes="(min-width: 768px) 48rem, 100vw"
-            class="mt-8 rounded-2xl bg-brand-50 p-4"
-            loading="lazy"
-          />
-        </article>
-
-        <article class="rounded-2xl border-l-4 border-accent-500 bg-brand-50 p-8">
-          <h2 class="text-2xl font-bold tracking-tight text-brand-800 text-balance">Proving the result</h2>
-          <p class="mt-4 leading-relaxed text-slate-600">
-            Each facility will undergo 12 months of pathogen testing to demonstrate effectiveness — providing data on
-            the reduction of pathogens including COVID-19, and showcasing the long-term benefits and efficacy of the
-            solutions.
-          </p>
-        </article>
-      </div>
-
-      <a
-        href="/industries/government-facilities"
-        class="mt-14 inline-block font-semibold text-brand-500 hover:text-brand-600"
-      >
-        <span aria-hidden="true">←</span> Back to Government Facilities
-      </a>
     </div>
   </Section>
 
-  <CallToAction
-    title="Facing the same problem?"
-    lead="If you manage a correctional or public facility with ageing ventilation, we can help you scope a system."
-  />
+  <Section tone="brand" title="Installation of Air & Surface Purification Systems">
+    <div class="mt-6 max-w-3xl">
+      <p class="text-lg leading-relaxed text-brand-100">
+        Germ Solution Service USA has installed their InductPro Series devices within the ductwork of the mentioned
+        prison facilities. These devices are designed to release molecules that actively target and disable COVID-19 and
+        other pathogens present in the air and on surfaces. By integrating these systems into the existing
+        infrastructure, the company aims to create a safer environment for staff, inmates and visitors.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="tint" title="Implementation of Indoor Air Quality Monitoring System 360">
+    <div class="mt-6 max-w-3xl space-y-6 text-lg leading-relaxed text-slate-700">
+      <p>
+        In addition to the purification systems, Germ Solution Service USA has installed their Indoor Air Quality
+        Monitoring System 360. This technology enables prison administrators to continuously monitor the air quality
+        within the facilities in real-time. This proactive approach allows for early detection of any potential issues
+        and ensures prompt action can be taken to maintain a healthy indoor environment.
+      </p>
+      <p>
+        To demonstrate the effectiveness of the installed systems, each facility will undergo 12 months of pathogen
+        testing. This comprehensive testing process will provide valuable data on the reduction of pathogens, including
+        COVID-19, within the prison environment. By conducting this testing over an extended period, Germ Solution
+        Service USA aims to showcase the long-term benefits and efficacy of their solutions.
+      </p>
+      <p>
+        Overall, Germ Solution Service USA's initiatives demonstrate a commitment to leveraging innovative technologies
+        to address the challenges posed by COVID-19 and other pathogens within prison facilities. By combining
+        purification systems with real-time monitoring and thorough testing protocols, they are contributing to the
+        creation of safer and healthier environments for all stakeholders involved
+      </p>
+    </div>
+  </Section>
 </Base>
