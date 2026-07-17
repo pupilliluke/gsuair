@@ -5,45 +5,90 @@ import Section from '../components/Section.astro';
 import { BUSINESS } from '../consts';
 
 /*
- * The homepage links here via its "Accreditations" button. On the old site this
- * page had a nav entry and a footer and nothing else, so there is no copy to
- * carry over — this holds the homepage's own accreditations text so the button
- * does not lead to a dead end. Not in the nav until there are real credentials
- * to list.
+ * 1:1 reproduction of the live gsuair.com/accreditations page: the same four
+ * credential blocks, in the same order, with the copy and link targets carried
+ * over verbatim — nothing added, nothing removed.
+ *
+ * The live COSTARS™ block is a heading and a VIEW link with no body copy; it
+ * stays that way here. Its PDF is still hosted on germsolutionsusa.com, so the
+ * link points off-site rather than at /pdfs.
  */
+
+// Verbatim from the live page. Order matches the live page top to bottom.
+const accreditations = [
+  {
+    name: 'IFMA - FACILITY MANAGEMENT PROFESSIONALS ASSOCIATION',
+    body: "Founded in 1980, we are the world's largest and most widely recognized association for facility management professionals, supporting over 24,000 members in more than 100 countries.",
+    linkLabel: 'Learn More',
+    href: 'https://www.ifma.org/about/about-ifma/',
+  },
+  {
+    name: 'ASHRAE',
+    body: 'ASHRAE is an international society of heating, refrigerating, and air-conditioning professionals. Founded in 1894, ASHRAE is dedicated to advancing human well-being through sustainable technology for the built environment.',
+    linkLabel: 'Learn More',
+    href: 'https://www.ashrae.org/',
+  },
+  {
+    name: 'COSTARS™ MEMBERSHIP LETTER',
+    body: null,
+    linkLabel: 'VIEW',
+    href: 'https://germsolutionsusa.com/files/2024/01/Costars_2023-2024_Letter_008-E22-918.pdf',
+  },
+  {
+    name: 'BBB',
+    body: 'The Better Business Bureau (BBB) is a private, non-profit organization that gathers information about businesses and provides consumers with access to this data to help them make informed decisions.',
+    linkLabel: 'Find out more',
+    href: 'https://www.bbb.org/',
+  },
+];
 ---
 
 <Base
   title="Accreditations"
-  description="Germ Solutions USA follows industry guidelines and the specific standards necessary to remain compliant."
-  noindex
+  description="Germ Solutions USA follows industry guidelines and the specific standards necessary to remain compliant. View our credentials: IFMA, ASHRAE, COSTARS and the BBB."
 >
-  <PageHero
-    eyebrow="Accreditations"
-    title="Our Customers Are Our Priority!"
-    lead="Germ Solutions USA is deeply committed to all aspects related to the quality of indoor air. We follow industry guidelines and the specific standards necessary to remain compliant."
-  />
+  <PageHero title="ACCREDITATIONS" lead={BUSINESS.phone} />
 
-  <Section>
-    <div class="mx-auto max-w-2xl text-center">
-      <p class="text-lg leading-relaxed text-slate-600">
-        Our credentials are being compiled for this page. In the meantime, we are happy to provide documentation on
-        request — certifications, test data and compliance records for any system we install.
-      </p>
-      <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-        <a
-          href="/contact"
-          class="rounded-lg bg-accent-500 px-7 py-3.5 font-semibold text-white transition-colors hover:bg-accent-600"
-        >
-          Request our credentials
-        </a>
-        <a
-          href={`tel:${BUSINESS.phoneHref}`}
-          class="rounded-lg border border-slate-300 px-7 py-3.5 font-semibold text-slate-700 transition-colors hover:border-brand-400 hover:text-brand-600"
-        >
-          Call {BUSINESS.phone}
-        </a>
-      </div>
-    </div>
-  </Section>
+  {
+    accreditations.map((item, i) => {
+      const onBrand = i % 2 === 1;
+      return (
+        <Section tone={onBrand ? 'brand' : 'tint'}>
+          <div class="mx-auto max-w-3xl text-center">
+            <h2
+              class:list={[
+                'font-display text-2xl font-bold tracking-wide text-balance sm:text-3xl',
+                onBrand ? 'text-white' : 'text-brand-800',
+              ]}
+            >
+              {item.name}
+            </h2>
+            {item.body && (
+              <p
+                class:list={[
+                  'mt-6 text-lg leading-relaxed text-pretty',
+                  onBrand ? 'text-brand-100' : 'text-slate-700',
+                ]}
+              >
+                {item.body}
+              </p>
+            )}
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class:list={[
+                'mt-9 inline-block border px-8 py-4 text-sm font-bold uppercase tracking-[0.15em] transition-colors',
+                onBrand
+                  ? 'border-white/70 text-white hover:border-white hover:bg-white hover:text-brand-800'
+                  : 'border-slate-500 text-slate-800 hover:border-brand-600 hover:text-brand-700',
+              ]}
+            >
+              {item.linkLabel}
+            </a>
+          </div>
+        </Section>
+      );
+    })
+  }
 </Base>

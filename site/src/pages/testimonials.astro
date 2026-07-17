@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+
+/*
+ * 1:1 reproduction of the live gsuair.com testimonials page: the h1, the Boston
+ * theatres story and the Karl O grow-room quote — nothing added, nothing
+ * removed. The copy is verbatim, which includes the live page's own quirks:
+ * "Active Pure" as two words, "Theaters"/"Theatres" spelled both ways, "Indoor
+ * Air Qualification System", and the missing "is" in "and that Active Pure
+ * Technology". Left as-is at the owner's request.
+ *
+ * "The Show Must Go On!" is not a heading element on the live page, so it is
+ * reproduced as display text rather than an <h2>.
+ *
+ * The only image on the live page is a lazy-load placeholder with no real
+ * source, so there is no image to carry over.
+ */
+---
+
+<Base
+  title="Testimonials"
+  description="What customers say about their ActivePure indoor air purification systems from Germ Solutions USA."
+>
+  <PageHero title="TESTIMONIALS" />
+
+  <!-- Boston performing arts theatres -->
+  <Section tone="tint">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="font-display text-3xl font-bold tracking-tight text-brand-800 sm:text-4xl text-balance">
+        "The Show Must Go On!"
+      </p>
+      <p class="mt-8 text-lg leading-relaxed text-slate-700 text-pretty">
+        After the COVID-19 epidemic, CEO &amp; President of Boston MA Performing Arts Theaters Invested in Active Pure's
+        Indoor Air Qualification System. The System Solved the Indoor Air Issues and the Theatres were cleared to
+        Re-open.
+      </p>
+    </div>
+  </Section>
+
+  <!-- Grow room owner -->
+  <Section tone="brand">
+    <figure class="mx-auto max-w-3xl text-center">
+      <blockquote class="text-xl leading-relaxed text-white sm:text-2xl text-pretty">
+        "I have tried many systems that claim they can reduce these problematic issues within my grow rooms but there has
+        only been one that actually did and that Active Pure Technology"
+      </blockquote>
+      <figcaption class="mt-8 text-sm font-semibold uppercase tracking-[0.15em] text-accent-400">
+        Karl O - Owner Tulsa OK
+      </figcaption>
+    </figure>
+  </Section>
+</Base>

@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import { BUSINESS } from '../consts';
+
+/*
+ * The live gsuair.com/about-us page is genuinely empty — header, footer and the
+ * cookie banner, and nothing else. But ABOUT US is a real item in the ABOUT
+ * menu, so the route has to exist and must not 404.
+ *
+ * This is therefore a deliberate placeholder, not a reproduction: there is no
+ * live copy to carry over. It stays minimal and honest — no invented history,
+ * mission statement, team bios or stats — and is noindexed so an empty page
+ * never competes with the real content in search. Once the owner supplies the
+ * About copy, it drops straight into the Section below.
+ */
+---
+
+<Base
+  title="About Us"
+  description="About Germ Solutions USA — get in touch to learn more about our air purification systems."
+  noindex
+>
+  <PageHero title="ABOUT US" lead={BUSINESS.phone} />
+
+  <Section tone="tint">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-lg leading-relaxed text-slate-700">
+        We are happy to tell you more about {BUSINESS.name} and our air purification systems — please
+        <a href="/contact" class="font-bold text-brand-700 underline underline-offset-2 hover:text-brand-600">
+          get in touch
+        </a>
+        or call us at
+        <a
+          href={`tel:${BUSINESS.phoneHref}`}
+          class="font-bold text-brand-700 underline underline-offset-2 hover:text-brand-600"
+        >
+          {BUSINESS.phone}
+        </a>.
+      </p>
+    </div>
+  </Section>
+</Base>

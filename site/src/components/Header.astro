@@ -13,8 +13,8 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
       <Image src={logo} alt={BUSINESS.name} height={38} densities={[1, 2]} class="h-9 w-auto" loading="eager" />
     </a>
 
-    <!-- Desktop nav -->
-    <nav class="hidden items-center gap-1 lg:flex" aria-label="Main">
+    <!-- Desktop nav. Items and labels mirror the gsuair.com menu exactly. -->
+    <nav class="hidden items-center gap-0.5 lg:flex" aria-label="Main">
       {
         NAV.map((item) =>
           item.children ? (
@@ -22,7 +22,7 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
               <button
                 type="button"
                 class:list={[
-                  'flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                  'flex items-center gap-1 whitespace-nowrap rounded-md px-2.5 py-2 text-xs font-semibold tracking-wide transition-colors',
                   isActive(item.href) ? 'text-brand-600' : 'text-slate-700 hover:text-brand-600',
                 ]}
                 aria-expanded="false"
@@ -59,7 +59,7 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
             <a
               href={item.href}
               class:list={[
-                'rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                'whitespace-nowrap rounded-md px-2.5 py-2 text-xs font-semibold tracking-wide transition-colors',
                 isActive(item.href) ? 'text-brand-600' : 'text-slate-700 hover:text-brand-600',
               ]}
             >
@@ -68,12 +68,6 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
           )
         )
       }
-      <a
-        href={`tel:${BUSINESS.phoneHref}`}
-        class="ml-2 rounded-lg bg-brand-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-600"
-      >
-        {BUSINESS.phone}
-      </a>
     </nav>
 
     <!-- Mobile toggle -->
@@ -120,12 +114,6 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
           ))
         }
       </ul>
-      <a
-        href={`tel:${BUSINESS.phoneHref}`}
-        class="mt-4 block rounded-lg bg-brand-500 px-4 py-3 text-center font-semibold text-white"
-      >
-        Call {BUSINESS.phone}
-      </a>
     </nav>
   </div>
 </header>

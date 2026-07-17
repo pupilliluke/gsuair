@@ -2,126 +2,133 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
-import CallToAction from '../components/CallToAction.astro';
+import CheckList from '../components/CheckList.astro';
 
 import fundingHero from '../assets/funding-hero.jpg';
 
+/*
+ * 1:1 reproduction of the live gsuair.com funding page: same headings, same
+ * order, same copy, same links — nothing added, nothing removed. That includes
+ * the "Releif" typo and the "COVID-19. and other needs:" run-on in the ESSER
+ * intro, and the biotechnology filler paragraph under EANS 11, all kept at the
+ * owner's request. The live page has no closing call to action, so neither
+ * does this one.
+ */
+
+// Verbatim from the live funding page, in live order.
 const programs = [
   {
-    name: 'ESSER',
-    full: 'Elementary and Secondary School Emergency Relief Fund',
-    copy: 'A federal program providing emergency funding to schools to address the impact of COVID-19 and other needs. Products may qualify for funding within ESSER and EANS (Emergency Assistance to Non-Public Schools).',
-    href: 'https://www.ed.gov/grants-and-programs/formula-grants/response-formula-grants/covid-19-emergency-relief-grants/elementary-and-secondary-school-emergency-relief-fund',
-  },
-  {
     name: 'COSTARS™',
-    full: "Pennsylvania's cooperative purchasing program",
-    copy: 'COSTARS is the Commonwealth of Pennsylvania\'s cooperative purchasing program. It serves as a conduit through which registered Pennsylvania local public procurement units and state-affiliated entities can leverage contracts established by DGS to identify suppliers cost-effectively.',
+    copy: "COSTARS is the Commonwealth of Pennsylvania's cooperative purchasing program and serves as a conduit through which registered and eligible Pennsylvania local public procurement units (LPPUs) and Pennsylvania state-affiliated entities (together \"Members\") are able to leverage contracts established by DGS to cost-effectively and efficiently identify suppliers with whom to do business.",
     href: 'https://www.pa.gov/agencies/dgs/programs-and-services/costars.html',
+    linkLabel: 'Learn More',
   },
   {
     name: 'UGG',
-    full: 'Uniform Grant Guidance',
-    copy: 'A government-wide framework for grants management that reduces administrative burden for non-federal entities receiving federal awards, while reducing the risk of waste, fraud and abuse.',
+    copy: 'The Uniform Grant Guidance (UGG) provides a government-wide framework for grants management that reduces administrative burden for non-federal entities receiving federal awards while reducing the risk of waste, fraud and abuse.',
     href: 'https://www.epa.gov/grants/uniform-requirements-managing-grants-apply-all-federal-executive-agencies',
+    linkLabel: 'Learn More',
   },
   {
-    name: 'EANS',
-    full: 'Emergency Assistance to Non-Public Schools',
-    // The live page carried generic "biotechnology solutions" filler here. Replaced
-    // with a description of what EANS actually is, plus the real application PDF.
-    copy: 'ARPA emergency assistance for non-public schools, administered in Pennsylvania as a subprogram for services and assistance — including measures that improve indoor air quality.',
+    name: 'EANS 11',
+    copy: 'Our biotechnology solutions can help you develop new products, improve existing ones, and advance research in the life sciences. Let us help you unlock the potential of biotech.',
     href: '/pdfs/ARPA_-_EANS_-_Nonpublic_Emergency_Relief_Subpr.pdf',
-    linkLabel: 'Download the application (PDF)',
+    linkLabel: 'DOWNLOAD APPLICATION',
   },
   {
     name: 'FEMA',
-    full: 'Federal Emergency Management Agency',
-    copy: 'Federal disaster and emergency assistance programs that may apply to qualifying facilities.',
+    copy: 'The Federal Emergency Management Agency (FEMA).',
     href: 'https://www.fema.gov/',
-  },
-  {
-    name: 'CAPE®',
-    full: 'The Council for American Private Education',
-    copy: 'A coalition of national associations serving private schools. Member associations include the PA Catholic Conference, Christian Schools International, the Friends Council on Education and the Pennsylvania Association of Independent Schools.',
-    href: 'https://capenetwork.org/',
+    linkLabel: 'Learn More',
   },
 ];
 
 const contracts = [
-  { label: 'TIPS purchasing number', value: 'Contract # 210102' },
-  { label: 'PEPPM approval number', value: 'Approved Vendor # 533902-167' },
+  { name: 'TIPS PURCHASING NUMBER', value: 'Contract # - 210102' },
+  { name: 'PEPPM APPROVAL NUMBER', value: 'Approved Vendor # 533902-167' },
 ];
 
 const capeMembers = [
-  'Agudath Israel — Mid-Atlantic Region',
+  'Agudath Israel-Mid-Atlantic Region',
   'American Montessori Society Schools of PA',
-  'Association of Christian Schools International — NE Region',
+  'Association of Christian Schools International - NE Region',
   'Association of Christian Teachers and Schools',
   'Christian Schools International',
   'Friends Council on Education',
   'PA Catholic Conference',
   'Pennsylvania Association of Independent Schools',
-  'Teach PA — A Project of the Orthodox Union',
+  'Teach PA - A Project of the Orthodox Union',
 ];
 ---
 
 <Base
   title="Funding"
-  description="Grants and funding for air purification: ESSER, EANS, COSTARS, UGG, FEMA and CAPE. TIPS contract #210102, PEPPM vendor #533902-167."
+  description="ESSER, EANS 11, COSTARS, UGG, FEMA and CAPE funding for air purification. TIPS contract # 210102, PEPPM approved vendor # 533902-167."
 >
   <PageHero
-    eyebrow="Grants & Funding"
-    title="You may not have to pay for this out of pocket"
-    lead="Schools, non-public schools and public facilities can often fund air purification through existing federal and Pennsylvania programs. Use the links below, and call us — we will help you work out which one fits."
+    title="ESSER"
+    lead="ESSER is the Elementary and Secondary Emergency Releif Federal Program that provides emergency funding to schools to address the impact of COVID-19. and other needs: Products qualify for funding within the ESSER (Elementary and Secondary School Emergency Relief Fund) and EANS (Emergency Assistance to Non-Public Schools)."
     image={fundingHero}
     imageAlt="Brick school building"
-  />
+  >
+    <a
+      href="https://www.ed.gov/grants-and-programs/formula-grants/response-formula-grants/covid-19-emergency-relief-grants/elementary-and-secondary-school-emergency-relief-fund"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-8 inline-block bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.15em] text-brand-800 shadow-md transition-colors hover:bg-brand-50"
+    >
+      Learn More
+    </a>
+  </PageHero>
 
-  <Section eyebrow="Available customer funding" title="Programs & purchasing routes">
+  <!-- Available customer funding -->
+  <Section tone="brand" title="AVAILABLE CUSTOMER FUNDING" lead="Use links provided below to access funding and grants.">
     <ul class="mt-12 grid gap-6 md:grid-cols-2">
       {
         programs.map((p) => (
-          <li class="flex flex-col rounded-2xl border border-slate-200 p-8">
-            <h3 class="text-xl font-semibold text-brand-700">{p.name}</h3>
-            <p class="mt-1 text-sm font-medium text-slate-500">{p.full}</p>
+          <li class="flex flex-col rounded-2xl border border-brand-100 bg-white p-8">
+            <h3 class="font-display text-xl font-bold tracking-wide text-brand-700">{p.name}</h3>
             <p class="mt-4 flex-1 leading-relaxed text-slate-600">{p.copy}</p>
             <a
               href={p.href}
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-6 font-semibold text-brand-500 hover:text-brand-600"
+              class="mt-6 font-semibold text-brand-600 hover:text-brand-700"
             >
-              {p.linkLabel ?? 'Learn more'} <span aria-hidden="true">→</span>
+              {p.linkLabel} <span aria-hidden="true">→</span>
             </a>
           </li>
         ))
       }
     </ul>
-  </Section>
 
-  <Section tone="tint" eyebrow="Contract vehicles" title="Already approved to sell to you">
-    <div class="mt-10 grid gap-6 sm:grid-cols-2">
+    <div class="mt-6 grid gap-6 sm:grid-cols-2">
       {
         contracts.map((c) => (
           <div class="rounded-2xl border border-brand-100 bg-white p-8">
-            <p class="text-sm font-medium uppercase tracking-wider text-slate-500">{c.label}</p>
-            <p class="mt-2 font-display text-2xl font-bold text-brand-700">{c.value}</p>
+            <h3 class="text-sm font-bold uppercase tracking-[0.15em] text-slate-500">{c.name}</h3>
+            <p class="mt-3 font-display text-2xl font-bold text-brand-700">{c.value}</p>
           </div>
         ))
       }
     </div>
-
-    <div class="mt-8 rounded-2xl border border-brand-100 bg-white p-8">
-      <h3 class="text-lg font-semibold text-brand-800">CAPE® member associations</h3>
-      <ul class="mt-5 grid gap-x-10 gap-y-2.5 text-slate-600 sm:grid-cols-2">
-        {capeMembers.map((m) => <li class="text-sm leading-relaxed">{m}</li>)}
-      </ul>
-    </div>
   </Section>
 
-  <CallToAction
-    title="Not sure which program applies to you?"
-    lead="Funding paperwork is the part most people dread. Call us and we will point you at the right one."
-  />
+  <!-- CAPE -->
+  <Section tone="tint">
+    <div class="mx-auto max-w-3xl">
+      <h2 class="text-3xl font-bold tracking-tight text-brand-800 sm:text-4xl">CAPE®</h2>
+      <p class="mt-5 text-lg leading-relaxed text-slate-700">The Council for American Private Education</p>
+      <p class="mt-8 font-semibold text-brand-800">Member Associations:</p>
+      <CheckList items={capeMembers} marker="dot" columns={2} class="mt-5" />
+      <a
+        href="https://capenetwork.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-10 inline-block border border-slate-500 px-8 py-4 text-sm font-bold uppercase tracking-[0.15em] text-slate-800 transition-colors hover:border-brand-600 hover:text-brand-700"
+      >
+        LEARN MORE
+      </a>
+    </div>
+  </Section>
 </Base>

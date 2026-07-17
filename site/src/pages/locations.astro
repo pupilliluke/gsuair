@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import { LOCATIONS } from '../consts';
+
+/*
+ * 1:1 reproduction of the live gsuair.com LOCATIONS page: the h1 and the three
+ * offices, in the same order, with the same address lines and phone numbers —
+ * nothing added, nothing removed.
+ *
+ * The live page carries a single "Directions" link (under PITTSBURGH PA) that
+ * points at the bare mapquest.com homepage, so it never actually resolves to
+ * the office. Each card here gets a real Google Maps link built from its own
+ * address instead.
+ */
+
+const directionsUrl = (lines: readonly string[]) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(lines.join(', '))}`;
+---
+
+<Base
+  title="Locations"
+  description={`Germ Solutions USA offices: ${LOCATIONS.map((l) => l.name).join(', ')}.`}
+>
+  <PageHero title="LOCATIONS" />
+
+  <Section tone="tint">
+    <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        LOCATIONS.map((location) => (
+          <li class="flex flex-col rounded-2xl bg-white p-8 shadow-sm ring-1 ring-brand-100">
+            <h3 class="font-display text-xl font-bold tracking-wider text-brand-800">{location.name}</h3>
+
+            <address class="mt-5 flex-1 not-italic leading-relaxed text-slate-700">
+              {location.lines.map((line) => (
+                <span class="block">{line}</span>
+              ))}
+            </address>
+
+            <a
+              href={`tel:${location.phoneHref}`}
+              class="mt-5 inline-block text-lg font-semibold text-brand-600 hover:text-brand-700"
+            >
+              {location.phone}
+            </a>
+
+            <a
+              href={directionsUrl(location.lines)}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-[0.15em] text-slate-800 transition-colors hover:text-brand-700"
+            >
+              Directions
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+</Base>

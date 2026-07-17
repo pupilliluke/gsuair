@@ -4,52 +4,51 @@ import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import Section from '../../components/Section.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
-import CallToAction from '../../components/CallToAction.astro';
-import CheckList from '../../components/CheckList.astro';
+import { BUSINESS } from '../../consts';
 
 import educationHero from '../../assets/education-hero.jpg';
 import classroom from '../../assets/education-classroom.jpg';
+import educationBenefits from '../../assets/education-benefits.png';
 
-const benefits = [
-  'The #1 ranked continuous air purification system, capable of attacking COVID-19 in the air and on surfaces immediately',
-  'Reduces almost 100% of surface and airborne contaminants within the first 24 hours of use',
-  'Controls &amp; neutralizes contaminants such as viruses, bacteria, mold, fungi &amp; VOCs in real time',
-  'Releases ActivePure® molecules that neutralize pathogens and contaminants on impact',
-  'Minimal maintenance',
-  'Ultra-quiet',
-  'Cost-effective',
-  'Installed and portable solutions available',
-];
+/*
+ * 1:1 reproduction of the live gsuair.com Education page: same heading, same
+ * copy, same order, same links — nothing added, nothing removed. That includes
+ * the trailing editor note by the video, kept at the owner's request.
+ */
 ---
 
 <Base
   title="Education"
-  description="Improve student productivity and reduce absenteeism. ActivePure® air and surface purification for K-12 schools, colleges and entire districts. Grants and funding available."
+  description="Poor indoor air quality in schools has been linked to drowsiness, headaches, loss of concentration, and asthma. ActivePure® has a solution to meet your facilities' unique needs."
 >
   <PageHero
-    eyebrow="Education"
-    title="Improving student productivity and reducing absenteeism"
-    lead="Germ Solutions USA believes school administrators, teachers, staff and children have the right to learn in a clean-air environment."
+    title="IMPROVING STUDENT PRODUCTIVITY & REDUCING ABSENTEEISM!"
     image={educationHero}
     imageAlt="Brick school building on a sunny day"
-  />
+  >
+    <p class="mt-6">
+      <a
+        href={`tel:${BUSINESS.phoneHref}`}
+        class="text-lg font-semibold text-white underline underline-offset-4 hover:text-accent-400"
+      >
+        {BUSINESS.phone}
+      </a>
+    </p>
+  </PageHero>
 
-  <Section>
-    <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
-      <div class="space-y-5 text-lg leading-relaxed text-slate-600">
+  <!-- Intro -->
+  <Section tone="tint">
+    <div class="grid items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
+      <div class="space-y-6 text-lg leading-relaxed text-slate-700">
         <p>
-          Poor indoor air quality affects the health of each of us. For children, it can negatively affect their
-          neurodevelopment and cognitive ability.
+          Poor indoor air quality affects the health of each of us. For children, it can affect their neurodevelopment
+          and cognitive ability negatively.
         </p>
         <p>
-          Indoor air quality problems in schools have been linked to drowsiness, headaches, loss of concentration and
-          asthma. It also increases absenteeism and leads to children falling behind academically. Class sizes
-          predetermined by state boards of education make it more difficult to distance one child from another.
-        </p>
-        <p>
-          Whether you need clean air in K-12 schools, elementary or primary schools, secondary schools, colleges,
-          universities, trade schools or an entire school district, ActivePure® has a solution to meet your facilities'
-          unique needs.
+          Indoor air quality problems in schools have been linked to drowsiness, headaches, loss of concentration, and
+          asthma. It also increases absenteeism and leads to children falling behind academically. Additionally, class
+          sizes that are predetermined by state boards of education make it more difficult to distance one child from
+          another.
         </p>
       </div>
       <Image
@@ -57,65 +56,73 @@ const benefits = [
         alt="Students raising their hands in a classroom"
         widths={[400, 700, 1000]}
         sizes="(min-width: 1024px) 26rem, 100vw"
-        class="rounded-2xl shadow-lg"
+        class="w-full rounded-2xl shadow-lg"
         loading="lazy"
       />
     </div>
   </Section>
 
-  <Section tone="tint" title="It doesn't just purify the air — it sanitizes surfaces" eyebrow="How it fits a school">
-    <div class="mt-8 grid gap-12 lg:grid-cols-2">
-      <div class="space-y-5 leading-relaxed text-slate-600">
-        <p>
-          HVAC-installed units as well as portables allow each school to customize a system to meet its specific needs.
-          In older school buildings with poor ventilation, portable units get to work immediately — sanitizing exposed
-          surfaces and the air in occupied spaces without the cost of overhauling an HVAC system.
-        </p>
-        <p>
-          A school can simply place an ActivePure® unit in each classroom and plug it into a regular wall outlet. It is
-          that easy.
-        </p>
-        <p>
-          The system includes marketing materials to promote your investment and educate team members, educators,
-          students and parents about the benefits for all.
-        </p>
-      </div>
-      <div class="rounded-2xl border border-brand-100 bg-white p-8">
-        <h3 class="text-lg font-semibold text-brand-800">System benefits</h3>
-        <CheckList items={benefits} class="mt-6" />
-      </div>
-    </div>
-  </Section>
-
-  <Section align="center" eyebrow="Watch" title="Clean air in the classroom">
-    <div class="mt-12">
-      <VideoEmbed src="https://www.youtube.com/embed/6eXyTL8-2_A" title="ActivePure® in education" />
-    </div>
-  </Section>
-
+  <!-- A solution for every school -->
   <Section tone="brand">
-    <div class="grid items-center gap-10 lg:grid-cols-[2fr_1fr]">
-      <div>
-        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent-400">Grants &amp; funding</p>
-        <h2 class="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">
-          Funding is available for educational facilities
-        </h2>
-        <p class="mt-5 max-w-xl leading-relaxed text-brand-100">
-          Products may qualify under ESSER, EANS, COSTARS, PEPPM and TIPS. We are happy to help you work out which
-          applies to your school.
-        </p>
-      </div>
-      <a
-        href="/funding"
-        class="inline-flex items-center justify-center rounded-lg bg-white px-7 py-3.5 font-semibold text-brand-700 transition-colors hover:bg-brand-50 lg:justify-self-end"
-      >
-        See funding options
-      </a>
+    <div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-brand-100">
+      <p>
+        Whether you need clean air in K-12 schools, elementary or primary schools, secondary schools, colleges,
+        universities, trade schools or an entire school district, ActivePure® has a solution to meet your facilities'
+        unique needs.
+      </p>
+      <p>
+        The system does not just purify the air, it sanitizes all surfaces. HVAC-installed units as well as portables
+        allow each school to customize a system to meet its specific needs. In older school buildings with poor
+        ventilation, portable units can get to work immediately to sanitize exposed surfaces and the air in occupied
+        spaces without the cost of overhauling an HVAC system. A school can simply place an ActivePure® unit in each
+        classroom, plugging it into a regular wall outlet. It is that easy.
+      </p>
+      <p>
+        The system includes marketing materials to promote your investment in your school and educate your team members,
+        educators, students, and parents about the benefits for all.
+      </p>
     </div>
   </Section>
 
-  <CallToAction
-    title="Let's find the right system for your school"
-    lead="Contact us any time — we will help you decide which air purification system is best for your facility."
-  />
+  <!--
+    "System benefits" graphic, as on the live page. Its bullet text exists only
+    inside the pixels, so it is transcribed into alt text rather than re-typed
+    as body copy — the live page has no text equivalent.
+  -->
+  <Section tone="tint">
+    <Image
+      src={educationBenefits}
+      alt="System benefits: the #1 ranked continuous air purification system capable of attacking COVID-19 in the air and on surfaces immediately; reduces almost 100% of surface and airborne contaminants within the first 24 hours of use; controls and neutralizes contaminants such as viruses, bacteria, mold, fungi and VOC in real-time; the technology releases ActivePure® molecules which allows the neutralization of pathogens and contaminants on impact; minimal maintenance; ultra-quiet; cost-effective; installed and portable solutions available."
+      widths={[400, 600, 864]}
+      sizes="(min-width: 640px) 26rem, 90vw"
+      class="mx-auto w-full max-w-md rounded-lg shadow-md"
+      loading="lazy"
+    />
+  </Section>
+
+  <!-- Grants & Funding -->
+  <Section tone="tint">
+    <div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-slate-700">
+      <p>
+        Grants &amp; Funding are available for educational facilities. Navigate to our{' '}
+        <a href="/funding" class="font-bold text-brand-700 underline underline-offset-2 hover:text-brand-600">
+          Funding Page
+        </a>{' '}
+        and contact us anytime for more information. We are happy to help you decide which air purification system is
+        best for your school facility.
+      </p>
+      <p>
+        GERM SOLUTIONS USA believes that school administrators, teachers, staff members, and children have the right to
+        get an education in a clean-air learning environment.
+      </p>
+    </div>
+  </Section>
+
+  <!-- School video -->
+  <Section tone="brand" align="center">
+    <p class="mb-10 text-center text-lg leading-relaxed text-brand-100">
+      If we have a school video IF NOT A TESTIMONIAL
+    </p>
+    <VideoEmbed src="https://www.youtube.com/embed/6eXyTL8-2_A" title="School video" />
+  </Section>
 </Base>

@@ -3,106 +3,132 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
-import VideoEmbed from '../components/VideoEmbed.astro';
-import CallToAction from '../components/CallToAction.astro';
 import CheckList from '../components/CheckList.astro';
+import { BUSINESS, SITE } from '../consts';
 
 import productsHero from '../assets/products-hero.jpg';
 import guardianAir from '../assets/product-beyond-guardian-air.png';
 import pureAndClean from '../assets/product-pure-and-clean.png';
 
-// The live page repeated the "Pure & Clean" heading five times — a builder
-// artifact. The intended layout is two product cards.
-const products = [
-  {
-    name: 'Beyond Guardian Air',
-    image: guardianAir,
-    alt: 'Beyond Guardian Air portable purification unit',
-    blurb: 'Portable, whisper-quiet whole-room protection with no installation required.',
-    features: [
-      'Reduces up to 99% of contaminants in the air and on surfaces',
-      'Covers 351 sq. ft. at 4.2 air changes per hour, or up to 2,500 sq. ft. at 1.0',
-      'Portable — no installation required',
-      'Goes beyond HEPA filtration and ionization using ActivePure® technology',
-      'ENERGY STAR certified, whisper-silent, cleans 24/7',
-      'UL2998 certified — no ozone. Meets California Air Resources Board ozone emission limits.',
-    ],
-    brochure: '/pdfs/Brochure_BeyondGuardianAir-b28b1db.pdf',
-  },
-  {
-    name: 'Pure & Clean',
-    image: pureAndClean,
-    alt: 'Pure & Clean air purification unit',
-    blurb: 'For anyone concerned with indoor environmental quality and their health.',
-    features: [
-      'New and improved patented ActivePure® technology cell reduces over 99% of surface and airborne contaminants, faster',
-      'Five-speed fan with LED display',
-      'Replaceable ActivePure® technology cells',
-      'HEPA and activated carbon filters',
-      'UL2998 certified — no ozone. Meets California Air Resources Board ozone emission limits.',
-    ],
-    brochure: '/pdfs/Brochure_APC_PureClean%2B.pdf',
-  },
+/*
+ * 1:1 reproduction of the live gsuair.com Products page: same headings, same
+ * copy, same order, same downloads — nothing added, nothing removed. The live
+ * page leads with the tagline and the phone number as its h1, and names each
+ * product with an h4; both are kept. Copy below is verbatim, typos included
+ * ("containments", the repeated UL2998 line on Beyond Guardian Air).
+ */
+
+// Verbatim from the live Products page.
+const guardianAirFeatures = [
+  'Reduces 99% of containments in the air and on surfaces',
+  '351 sq. ft. at 4.2 ACH (air changes per hour) or up to 2500 sq. ft. at 1.0',
+  'Portable and no installation is required',
+  'Better than HEPA filtration, ionization, and uses ActivePure® Technology to reduce up to 99% of contaminants in the air and on surfaces',
+  'ENERGY STAR Certified, whisper silent operation, cleans 24/7, no ozone UL2998 Certified. Meets California ozone emissions limit. California Air Resources Board.',
+  'UL2998 Certified. Meets California ozone emissions limit. California Air Resources Board',
+];
+
+const pureAndCleanFeatures = [
+  'For anyone concerned with indoor environmental quality and their health',
+  'New and improved PATENTED ActivePure® Technology Cell reduces over 99% of all surface and airborne contaminants faster',
+  'Five Speed Fan and LED Display',
+  'Replaceable ActivePure® Technology Cells',
+  'HEPA and Activated Carbon Filters',
 ];
 ---
 
 <Base
   title="Products"
-  description="Beyond Guardian Air and Pure & Clean — portable ActivePure® air and surface purification units. ENERGY STAR and UL2998 certified, no ozone."
+  description="Beyond Guardian Air and Pure &amp; Clean — Beyond by Aerus air purification products with ActivePure® Technology."
 >
   <PageHero
-    eyebrow="Beyond by Aerus"
-    title="Breathe clean. Live your best life."
-    lead="Beyond by Aerus products combine world-class, space-inspired technology with innovative design to create a new standard of environmental quality for every indoor space."
+    eyebrow={SITE.tagline}
+    title={BUSINESS.phone}
     image={productsHero}
     imageAlt="City skyline viewed from below"
   />
 
-  <Section>
-    <div class="space-y-20">
-      {
-        products.map((p, i) => (
-          <article class="grid items-center gap-12 lg:grid-cols-2">
-            <div class:list={['rounded-2xl bg-brand-50 p-8', i % 2 === 1 && 'lg:order-last']}>
-              <Image
-                src={p.image}
-                alt={p.alt}
-                widths={[400, 700, 1000]}
-                sizes="(min-width: 1024px) 34rem, 100vw"
-                class="mx-auto w-full max-w-sm object-contain"
-                loading="lazy"
-              />
-            </div>
-            <div>
-              <h2 class="text-3xl font-bold tracking-tight text-brand-800 sm:text-4xl">{p.name}</h2>
-              <p class="mt-3 text-lg text-slate-600">{p.blurb}</p>
-              <CheckList items={p.features} class="mt-7" />
-              <a
-                href={p.brochure}
-                target="_blank"
-                rel="noopener"
-                class="mt-8 inline-flex items-center gap-2 rounded-lg bg-brand-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-600"
-              >
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0 4-4m-4 4-4-4M4 20h16" />
-                </svg>
-                Download brochure (PDF)
-              </a>
-            </div>
-          </article>
-        ))
-      }
-    </div>
-  </Section>
-
-  <Section tone="tint" align="center" title="The indoor air purification system" eyebrow="Certified by NASA">
-    <p class="mx-auto mt-5 max-w-2xl text-center text-lg leading-relaxed text-slate-600">
-      The technology that provides the solution to better indoor air quality, purifying the spaces we share with others.
+  <!-- Intro -->
+  <Section tone="tint">
+    <p class="mx-auto max-w-3xl text-lg leading-relaxed text-slate-700">
+      Beyond by Aerus products combine world-class, space-inspired technologies with innovative design in order to
+      establish extraordinary, healthy living environments. Our goal is to create a new standard of environmental
+      quality for every indoor space, and Beyond by Aerus products are instrumental in this implementation.
     </p>
-    <div class="mt-12">
-      <VideoEmbed src="https://player.vimeo.com/video/1047595425?h=d2fc01db4e" title="Beyond by Aerus product overview" />
-    </div>
   </Section>
 
-  <CallToAction />
+  <!-- Beyond Guardian Air -->
+  <Section>
+    <article class="grid items-center gap-12 lg:grid-cols-2">
+      <div class="rounded-2xl bg-brand-50 p-8">
+        <Image
+          src={guardianAir}
+          alt="Beyond Guardian Air purification unit"
+          widths={[400, 700, 1000]}
+          sizes="(min-width: 1024px) 34rem, 100vw"
+          class="mx-auto w-full max-w-sm object-contain"
+          loading="lazy"
+        />
+      </div>
+      <div>
+        <h4 class="text-3xl font-bold tracking-tight text-brand-800 sm:text-4xl text-balance">Beyond Guardian Air</h4>
+        <CheckList items={guardianAirFeatures} class="mt-7" />
+        <a
+          href="/pdfs/Brochure_BeyondGuardianAir-b28b1db.pdf"
+          target="_blank"
+          rel="noopener"
+          class="mt-8 inline-flex items-center gap-2 rounded-lg bg-brand-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-600"
+        >
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0 4-4m-4 4-4-4M4 20h16" />
+          </svg>
+          Click here to view or download brochure
+        </a>
+      </div>
+    </article>
+  </Section>
+
+  <!-- Pure & Clean -->
+  <Section tone="tint">
+    <article class="grid items-center gap-12 lg:grid-cols-2">
+      <div class="rounded-2xl bg-white p-8 lg:order-last">
+        <Image
+          src={pureAndClean}
+          alt="Pure &amp; Clean air purification unit"
+          widths={[400, 700, 1000]}
+          sizes="(min-width: 1024px) 34rem, 100vw"
+          class="mx-auto w-full max-w-sm object-contain"
+          loading="lazy"
+        />
+      </div>
+      <div>
+        <h4 class="text-3xl font-bold tracking-tight text-brand-800 sm:text-4xl text-balance">Pure &amp; Clean</h4>
+        <CheckList items={pureAndCleanFeatures} class="mt-7" />
+        <a
+          href="/pdfs/Brochure_APC_PureCleanPlus.pdf"
+          target="_blank"
+          rel="noopener"
+          class="mt-8 inline-flex items-center gap-2 rounded-lg bg-brand-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-600"
+        >
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0 4-4m-4 4-4-4M4 20h16" />
+          </svg>
+          Click here to view or download brochure
+        </a>
+      </div>
+    </article>
+  </Section>
+
+  <!-- The Indoor Air Purification System -->
+  <Section tone="brand" align="center">
+    <div class="mx-auto max-w-3xl text-center">
+      <h4 class="text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">
+        The Indoor Air Purification System
+      </h4>
+      <p class="mt-6 text-lg leading-relaxed text-brand-100">
+        The technology that provides the solution to better indoor air quality, purifying the spaces we share with
+        others. Certified by NASA.
+      </p>
+    </div>
+  </Section>
 </Base>

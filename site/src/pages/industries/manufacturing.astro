@@ -3,85 +3,93 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import Section from '../../components/Section.astro';
-import CallToAction from '../../components/CallToAction.astro';
 import CheckList from '../../components/CheckList.astro';
 
 import growroomHero from '../../assets/growroom-hero.jpg';
 import growroomModular from '../../assets/growroom-modular.jpg';
 
+/*
+ * 1:1 reproduction of the live gsuair.com Manufacturing page: same headings,
+ * same order, same copy — nothing added, nothing removed. The copy is verbatim,
+ * including the live page's typos ("Growi ng", "the these", "effectivity",
+ * "Active Pure" rather than "ActivePure") and the unpunctuated Karl O quote.
+ * The live page ends on the testimonial — no closing CTA band.
+ */
+
+// Verbatim from the live page.
 const results = [
-  '24/7 continuous sanitization to prevent mold &amp; mildew',
-  'Round-the-clock protection for your grow room, while also reducing bacteria and viruses that can harm staff and visitors',
-  'Helps you pass microbial lab tests and reach true pharma-grade product',
+  '24/7 Continuous Sanitization Protection to Prevent Mold &amp; Mildew',
+  '24/7 protection for your grow room while it also reduces bacteria and virus that can potentially harm your staff and visitors',
 ];
 ---
 
 <Base
-  title="Grow Rooms"
-  description="ActivePure® technology for cannabis cultivation: inactivate mold and fungi up to a 6-log reduction in high-density, high-humidity grow rooms."
+  title="Manufacturing"
+  description="Active Pure technology is designed specifically for high-density, high-humidity areas such as cannabis cultivation environments."
 >
   <PageHero
-    eyebrow="Cultivation & Grow Rooms"
-    title="Protecting crops from mold & mildew"
-    lead="Growing in a sealed room with high humidity and numerous other variables creates a perfect storm for mold, mildew and contamination — and a cultivation crop disaster."
+    title="PROTECTING CROPS FROM MOLD & MILDEW"
     image={growroomHero}
     imageAlt="Cannabis cultivation grow room under lights"
   />
 
-  <Section>
-    <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
-      <div class="space-y-5 text-lg leading-relaxed text-slate-600">
-        <h2 class="text-3xl font-bold tracking-tight text-brand-800 sm:text-4xl">Grow rooms</h2>
-        <p>
-          ActivePure® technology is designed specifically for high-density, high-humidity areas such as cannabis
-          cultivation environments. Our proprietary technology is in the Space Foundation Hall of Fame.
-        </p>
-        <p>
-          This world-renowned technology turns humidity in the air into a DHP solution that inactivates mold and fungi
-          up to a <strong class="font-semibold text-brand-700">6-log reduction</strong>. The result is a clean-room
-          environment that allows your plants to thrive and helps you pass microbial lab tests — creating true
-          pharma-grade product. ActivePure® inactivates pathogens where they grow.
-        </p>
-        <p>
-          We understand that grow rooms require a solution that reduces the environmental load. The technology sanitizes
-          both air and surfaces within the environment quickly and effectively. Molecules are distributed through
-          HVAC/InDuct systems or portable units, attacking pathogens at their point of origin — on the plants, benches,
-          light ballasts and pots, in the air and on surfaces.
-        </p>
+  <!-- Manufacturing.. -->
+  <Section tone="tint" title="Manufacturing..">
+    <p class="mx-auto max-w-3xl text-lg leading-relaxed text-slate-700">
+      Growi ng Marijuana plants in a room coupled with high humidity and numerous other variables can create a "perfect
+      storm" for mold, mildew and contamination issues to create a cultivation crop disaster.
+    </p>
+  </Section>
+
+  <!-- GROW ROOMS -->
+  <Section tone="brand">
+    <div class="grid items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">GROW ROOMS</h2>
+        <div class="mt-6 space-y-5 text-lg leading-relaxed text-brand-100">
+          <p>
+            Active Pure technology is designed specifically for high-density, high-humidity areas such as cannabis
+            cultivation environments.Our proprietary technology is the "Space Foundation Hall of Fame". This world
+            renowned technology will turn humidity in the air into DHP solution that will inactivate mold and fungi up to
+            a 6 Log Reduction. The result is a clean room environment that will allow your plants to thrive and help you
+            pass your microbial lab tests creating true Pharma Grade product. Active Pure Technology Inactivates
+            Pathogens where they grow.
+          </p>
+          <p>We understand the these grow rooms require a solution that can reduce the environmental load hazards.</p>
+          <p>
+            The technology sanitizes both air and surfaces within the environments fast and effectivity. The molecules
+            are distributed in the environment either through HVAC/Inducts or portable units attacking the pathogens at
+            their point of origin, (on the plants, benches, light ballast, pots, both in the air and on surfaces).
+          </p>
+        </div>
       </div>
       <Image
         src={growroomModular}
         alt="Cutaway view of a modular grow room with tiered planting racks"
         widths={[400, 700, 1000]}
         sizes="(min-width: 1024px) 26rem, 100vw"
-        class="rounded-2xl bg-brand-50 p-4"
+        class="w-full rounded-2xl bg-white/95 p-4"
         loading="lazy"
       />
     </div>
   </Section>
 
+  <!-- THE RESULTS -->
   <Section tone="tint">
-    <div class="grid gap-12 lg:grid-cols-2">
+    <div class="grid items-start gap-12 lg:grid-cols-2">
       <div>
-        <h2 class="text-3xl font-bold tracking-tight text-brand-800 sm:text-4xl">The results</h2>
-        <CheckList items={results} class="mt-7" />
+        <h2 class="text-3xl font-bold tracking-tight text-brand-800 sm:text-4xl text-balance">THE RESULTS</h2>
+        <CheckList items={results} class="mt-7 text-lg" />
       </div>
       <figure class="rounded-2xl border-l-4 border-accent-500 bg-white p-8 shadow-sm">
         <blockquote class="text-lg leading-relaxed text-slate-700">
           <p>
-            "I have tried many systems that claim they can reduce these problematic issues within my grow rooms, but
-            there has only been one that actually did — and that's ActivePure® technology."
+            "I have tried many systems that claim they can reduce these problematic issues within my grow rooms but there
+            has only been one that actually did and that Active Pure Technology"
           </p>
         </blockquote>
-        <figcaption class="mt-6 text-sm font-semibold text-brand-700">
-          Karl O. <span class="font-normal text-slate-500">— Owner, Tulsa, OK</span>
-        </figcaption>
+        <figcaption class="mt-6 text-sm font-semibold text-brand-700">Karl O - Owner Tulsa OK</figcaption>
       </figure>
     </div>
   </Section>
-
-  <CallToAction
-    title="Protect your next harvest"
-    lead="Tell us the size and setup of your grow space and we will recommend an InDuct or portable configuration."
-  />
 </Base>

@@ -18,9 +18,31 @@ export const BUSINESS = {
   phone: '724.900.3853',
   phoneHref: '+17249003853',
   email: 'info@GermSolutionsUSA.com',
-  hours: '9:00 am – 5:00 pm',
+  hours: '09:00 am – 05:00 pm',
   hoursShort: 'Mon–Fri, 9:00 am – 5:00 pm',
 } as const;
+
+/** All three offices, as listed on the Locations page. */
+export const LOCATIONS = [
+  {
+    name: 'PITTSBURGH PA',
+    lines: ['204 N. Main St.', 'Zelienople PA 16063'],
+    phone: '724.900.3853',
+    phoneHref: '+17249003853',
+  },
+  {
+    name: 'IRVINE CA',
+    lines: ['15520 Rockfield Blvd.', 'Suite G', 'Irvine CA 92618'],
+    phone: '949.900.0047',
+    phoneHref: '+19499000047',
+  },
+  {
+    name: 'CLERMONT FL',
+    lines: ['15745 Bay Vista Dr.', 'Clermont FL 34714'],
+    phone: '407.717.5141',
+    phoneHref: '+14077175141',
+  },
+] as const;
 
 /** Replace with your Formspree form ID (https://formspree.io -> New Form). */
 export const FORMSPREE_ID = 'YOUR_FORM_ID';
@@ -28,7 +50,7 @@ export const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
 
 export const SITE = {
   title: 'Germ Solutions USA',
-  tagline: 'Breathe Clean. Live Your Best Life.',
+  tagline: 'Breathe Clean - Live Your Best Life!',
   description:
     'ActivePure® air and surface purification for schools, government facilities, grow rooms, retail and homes. Independent dealer of Beyond by Aerus. Zelienople, PA.',
 } as const;
@@ -39,21 +61,44 @@ export type NavItem = {
   children?: { label: string; href: string }[];
 };
 
+/** Mirrors the gsuair.com menu exactly — same items, same labels, same order. */
 export const NAV: NavItem[] = [
-  { label: 'Products', href: '/products' },
-  { label: 'Technology', href: '/technology' },
+  { label: 'Home', href: '/' },
+  { label: 'PRODUCTS', href: '/products' },
+  { label: 'TECHNOLOGY', href: '/technology' },
   {
-    label: 'Industries',
+    label: 'INDUSTRIES',
     href: '/industries',
     children: [
-      { label: 'Education', href: '/industries/education' },
-      { label: 'Government Facilities', href: '/industries/government-facilities' },
-      { label: 'Grow Rooms', href: '/industries/manufacturing' },
-      { label: 'Retail: Cigar & Tobacco', href: '/industries/retail' },
-      { label: 'Residences & Home Offices', href: '/industries/residences' },
+      { label: 'EDUCATION', href: '/industries/education' },
+      { label: 'GOVERNMENT FACILITIES', href: '/industries/government-facilities' },
+      { label: 'MANUFACTURING', href: '/industries/manufacturing' },
+      { label: 'MEDICAL', href: '/industries/medical' },
+      { label: 'RESIDENCES/HOME OFFICES', href: '/industries/residences' },
+      { label: 'RETAIL SECTOR', href: '/industries/retail' },
     ],
   },
+  {
+    label: 'PRESS',
+    href: '/articles',
+    children: [{ label: 'ARTICLES', href: '/articles' }],
+  },
   { label: 'Funding', href: '/funding' },
-  { label: 'Articles', href: '/articles' },
-  { label: 'Contact', href: '/contact' },
+  {
+    label: 'ABOUT',
+    href: '/about-us',
+    children: [
+      { label: 'ABOUT US', href: '/about-us' },
+      { label: 'TESTIMONIALS', href: '/testimonials' },
+      { label: 'ACCREDITATIONS', href: '/accreditations' },
+    ],
+  },
+  {
+    label: 'CONTACT US',
+    href: '/contact',
+    children: [
+      { label: 'CONTACT US', href: '/contact' },
+      { label: 'LOCATIONS', href: '/locations' },
+    ],
+  },
 ];

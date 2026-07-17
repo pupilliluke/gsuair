@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import { BUSINESS } from '../../consts';
+
+/*
+ * The live gsuair.com Medical page is genuinely empty — nav and footer only, no
+ * headings and no copy. But MEDICAL is a live item in the INDUSTRIES menu, so
+ * the page has to exist and must not 404.
+ *
+ * This is therefore a deliberate placeholder rather than a reproduction: there
+ * is nothing to reproduce. It is kept minimal and honest — no invented claims,
+ * stats, or marketing copy — and carries noindex so an empty page never lands
+ * in search results. Replace with the owner's real copy when it is supplied.
+ */
+---
+
+<Base
+  title="Medical"
+  description="Information for medical and clinical environments is on the way. Call Germ Solutions USA to talk through your space."
+  noindex
+>
+  <PageHero title="MEDICAL" />
+
+  <Section tone="tint">
+    <div class="mx-auto max-w-3xl space-y-8 text-lg leading-relaxed text-slate-700">
+      <p>
+        Information about our air purification systems for medical and clinical environments is on the way. In the
+        meantime, give us a call — we are happy to talk through your space and help you choose the right system.
+      </p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a
+          href={`tel:${BUSINESS.phoneHref}`}
+          class="inline-block bg-brand-700 px-8 py-4 text-sm font-bold uppercase tracking-[0.15em] text-white shadow-md transition-colors hover:bg-brand-600"
+        >
+          Call {BUSINESS.phone}
+        </a>
+        <a
+          href="/contact"
+          class="inline-block border border-slate-500 px-8 py-4 text-sm font-bold uppercase tracking-[0.15em] text-slate-800 transition-colors hover:border-brand-600 hover:text-brand-700"
+        >
+          Contact us
+        </a>
+      </div>
+    </div>
+  </Section>
+</Base>

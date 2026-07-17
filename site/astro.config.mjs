@@ -3,9 +3,21 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
+/**
+ * Pages that render <meta name="robots" content="noindex"> via the Base layout.
+ * They must also stay out of the sitemap: submitting a noindex URL is a direct
+ * contradiction, and Search Console reports it as "Submitted URL marked
+ * 'noindex'". Keep this list in sync with the `noindex` prop in src/pages.
+ */
+const NOINDEX_PATHS = ['/industries/medical/', '/about-us/'];
+
 export default defineConfig({
   site: 'https://gsuair.com',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => !NOINDEX_PATHS.some((path) => new URL(page).pathname === path),
+    }),
+  ],
   vite: { plugins: [tailwindcss()] },
 
   // Old GoDaddy URLs -> new structure. Keeps existing inbound links and
