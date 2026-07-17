@@ -1,0 +1,116 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import CallToAction from '../../components/CallToAction.astro';
+
+import governmentHero from '../../assets/government-hero.jpg';
+import governmentBuilding from '../../assets/government-building.jpg';
+import iaqDashboard from '../../assets/iaq-360-dashboard.png';
+---
+
+<Base
+  title="Government Facilities"
+  description="Air and surface purification plus real-time IAQ 360 monitoring for government buildings and correctional facilities. Helps meet OSHA and EPA obligations."
+>
+  <PageHero
+    eyebrow="Government Facilities"
+    title="Why air quality matters in government facilities"
+    lead="Public buildings carry high occupancy, heavy traffic and strict health and safety obligations — on ageing infrastructure that was never designed for either."
+    image={governmentHero}
+    imageAlt="Corridor inside a correctional facility"
+  />
+
+  <Section>
+    <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
+      <div class="space-y-5 text-lg leading-relaxed text-slate-600">
+        <p>
+          Poor indoor air quality within government facilities has a direct impact on the health of employees and
+          visitors — and government facilities must also follow strict health and safety regulations enforced by OSHA
+          and the EPA. The higher the occupancy and traffic, the more dust, allergens and pollutants in the air. Without
+          properly purifying the indoor air, contaminants accumulate quickly.
+        </p>
+        <p>
+          Infrastructure and HVAC systems in older government buildings deteriorate over time, which leads to filters
+          not properly circulating clean air. Health issues including Legionnaires' disease, asthma and hypersensitivity
+          pneumonitis have been linked to poor indoor air quality and poor ventilation in such facilities.
+        </p>
+      </div>
+      <Image
+        src={governmentBuilding}
+        alt="Exterior of a government office building"
+        widths={[400, 700, 1000]}
+        sizes="(min-width: 1024px) 26rem, 100vw"
+        class="rounded-2xl shadow-lg"
+        loading="lazy"
+      />
+    </div>
+  </Section>
+
+  <!-- The old page titled this section "FUNDING....change copy below" — an editor
+       note that shipped to production. Replaced with a real heading. -->
+  <Section tone="tint" eyebrow="A two-part approach" title="Purify the air, then prove it">
+    <div class="mt-8 grid items-center gap-12 lg:grid-cols-2">
+      <div class="space-y-5 leading-relaxed text-slate-600">
+        <p>
+          Germ Solutions USA provides the <strong class="font-semibold text-brand-700">Indoor Air Quality Monitoring
+          System 360</strong>. This technology enables building administrators to continuously monitor air quality
+          within a facility in real time. The proactive approach allows early detection of potential issues and ensures
+          prompt action can be taken to maintain a healthy indoor environment.
+        </p>
+        <p>
+          Aerus indoor air purification products are designed to release molecules that actively target and disable
+          COVID-19 and other pathogens present in the air and on surfaces. Integrating these systems into existing
+          infrastructure creates a safer, healthier environment for everyone who enters the building.
+        </p>
+        <p>
+          The combination of the IAQ 360 testing service and the Aerus purification system results in a safer, healthier
+          environment for employees and visitors — while meeting OSHA and EPA regulations.
+        </p>
+      </div>
+      <Image
+        src={iaqDashboard}
+        alt="IAQ 360 monitoring dashboard showing real-time air quality readings alongside its sensor unit"
+        widths={[400, 800, 1400]}
+        sizes="(min-width: 1024px) 34rem, 100vw"
+        class="rounded-2xl bg-white p-4 shadow-lg"
+        loading="lazy"
+      />
+    </div>
+  </Section>
+
+  <Section>
+    <a
+      href="/industries/government-facilities/cambria-county"
+      class="group grid items-center gap-8 overflow-hidden rounded-2xl border border-slate-200 transition-all hover:border-brand-300 hover:shadow-lg md:grid-cols-[1fr_1.3fr]"
+    >
+      <Image
+        src={governmentHero}
+        alt="Interior of a correctional facility"
+        widths={[400, 700]}
+        sizes="(min-width: 768px) 22rem, 100vw"
+        class="h-full min-h-56 w-full object-cover"
+        loading="lazy"
+      />
+      <div class="p-8 md:pr-10">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent-500">Case study</p>
+        <h2 class="mt-3 text-2xl font-bold tracking-tight text-brand-800 text-balance">
+          Lehigh, York &amp; Cambria County correctional facilities
+        </h2>
+        <p class="mt-3 leading-relaxed text-slate-600">
+          Three Pennsylvania prison facilities found a solution for their poor indoor air quality — with 12 months of
+          pathogen testing to prove it.
+        </p>
+        <span class="mt-5 inline-block font-semibold text-brand-500 transition-transform group-hover:translate-x-0.5">
+          Read the success story <span aria-hidden="true">→</span>
+        </span>
+      </div>
+    </a>
+  </Section>
+
+  <CallToAction
+    title="Serving public facilities across Pennsylvania"
+    lead="We hold COSTARS, TIPS and PEPPM purchasing contracts. Tell us about your facility and we will take it from there."
+  />
+</Base>

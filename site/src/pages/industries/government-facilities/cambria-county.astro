@@ -1,0 +1,84 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import Section from '../../../components/Section.astro';
+import CallToAction from '../../../components/CallToAction.astro';
+
+import cambriaHero from '../../../assets/cambria-hero.jpg';
+import iaqDashboard from '../../../assets/iaq-360-dashboard.png';
+---
+
+<Base
+  title="Case Study: Lehigh, York & Cambria County Correctional Facilities"
+  description="How Germ Solutions USA installed InductPro air and surface purification and IAQ 360 monitoring across three Pennsylvania correctional facilities."
+>
+  <PageHero
+    eyebrow="Case study"
+    title="Lehigh, York & Cambria Counties' correctional facilities"
+    lead="PA prison facilities find a solution for their poor indoor air quality."
+    image={cambriaHero}
+    imageAlt="Interior of a correctional facility"
+  />
+
+  <Section>
+    <div class="mx-auto max-w-3xl">
+      <p class="text-lg leading-relaxed text-slate-600">
+        Germ Solutions USA has taken significant steps to enhance safety measures within the prison facilities of
+        Lehigh, York and Cambria Counties in Pennsylvania.
+      </p>
+
+      <div class="mt-14 space-y-14">
+        <article>
+          <h2 class="text-2xl font-bold tracking-tight text-brand-800 text-balance">
+            Installation of air &amp; surface purification systems
+          </h2>
+          <p class="mt-4 leading-relaxed text-slate-600">
+            Germ Solutions USA installed InductPro Series devices within the ductwork of the facilities. These devices
+            release molecules that actively target and disable COVID-19 and other pathogens in the air and on surfaces,
+            integrating into the existing infrastructure to create a safer environment for staff, inmates and visitors.
+          </p>
+        </article>
+
+        <article>
+          <h2 class="text-2xl font-bold tracking-tight text-brand-800 text-balance">
+            Implementation of Indoor Air Quality Monitoring System 360
+          </h2>
+          <p class="mt-4 leading-relaxed text-slate-600">
+            The IAQ 360 system enables prison administrators to continuously monitor air quality in real time, allowing
+            early detection of issues and prompt action.
+          </p>
+          <Image
+            src={iaqDashboard}
+            alt="IAQ 360 monitoring dashboard showing real-time air quality readings alongside its sensor unit"
+            widths={[400, 800, 1400]}
+            sizes="(min-width: 768px) 48rem, 100vw"
+            class="mt-8 rounded-2xl bg-brand-50 p-4"
+            loading="lazy"
+          />
+        </article>
+
+        <article class="rounded-2xl border-l-4 border-accent-500 bg-brand-50 p-8">
+          <h2 class="text-2xl font-bold tracking-tight text-brand-800 text-balance">Proving the result</h2>
+          <p class="mt-4 leading-relaxed text-slate-600">
+            Each facility will undergo 12 months of pathogen testing to demonstrate effectiveness — providing data on
+            the reduction of pathogens including COVID-19, and showcasing the long-term benefits and efficacy of the
+            solutions.
+          </p>
+        </article>
+      </div>
+
+      <a
+        href="/industries/government-facilities"
+        class="mt-14 inline-block font-semibold text-brand-500 hover:text-brand-600"
+      >
+        <span aria-hidden="true">←</span> Back to Government Facilities
+      </a>
+    </div>
+  </Section>
+
+  <CallToAction
+    title="Facing the same problem?"
+    lead="If you manage a correctional or public facility with ageing ventilation, we can help you scope a system."
+  />
+</Base>

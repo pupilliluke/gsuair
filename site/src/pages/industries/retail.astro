@@ -1,0 +1,103 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import CallToAction from '../../components/CallToAction.astro';
+
+import retailHero from '../../assets/retail-tobacco-field.jpg';
+---
+
+<Base
+  title="Retail: Cigar & Tobacco"
+  description="Mold ruins cigars and kills tobacco seedlings. ActivePure® reduces mold and fungi to safeguard humidors, lounges and indoor seed beds."
+>
+  <!-- The old page led with a placeholder heading ("IDENTIFY WHY RETAIL NEEDS OUR
+       PRODUCT") followed by template filler about booking air travel. Both removed;
+       the real subject of this page is cigar and tobacco mold. -->
+  <PageHero
+    eyebrow="Retail: Cigar & Tobacco"
+    title="Mold is the enemy of a good cigar"
+    lead="Humidors need humidity — and humidity invites mold. The same technology that protects a hospital ward protects your inventory, your lounge and your customers."
+    image={retailHero}
+    imageAlt="Rows of tobacco plants in a field at harvest"
+  />
+
+  <Section>
+    <div class="mx-auto max-w-3xl space-y-14">
+      <article>
+        <h2 class="text-2xl font-bold tracking-tight text-brand-800 sm:text-3xl text-balance">
+          What are the green-blue spots on my cigars?
+        </h2>
+        <div class="mt-4 space-y-4 leading-relaxed text-slate-600">
+          <p>
+            If you find blue or green spots on your cigars that leave a stain when you brush them off, the spots are
+            probably mold. Mold is a damaging fungus that results from storing cigars in too high a humidity, and it
+            will ruin the taste of your cigars.
+          </p>
+          <p>
+            <em>Candida parapsilosis</em> and <em>Penicillium ascomycetous</em> are two common fungal names identified by
+            a cigar mold study performed by an Australian biotech laboratory. Feeding on natural sugars secreted from the
+            tobacco leaves, cigar mold can appear in many colors — white, red, green, blue or yellow.
+          </p>
+        </div>
+      </article>
+
+      <article>
+        <h2 class="text-2xl font-bold tracking-tight text-brand-800 sm:text-3xl text-balance">
+          Tobacco indoor seed beds: mold &amp; fungi exposure
+        </h2>
+        <div class="mt-4 space-y-4 leading-relaxed text-slate-600">
+          <p>
+            Your indoor garden is never more vulnerable than in the first few weeks after you plant. Whether you start
+            with seeds or clones, tender seedlings can suffer from overheating, underfeeding and lethal fungi.
+          </p>
+          <p>
+            A very common problem when growing plants from seeds started indoors is the appearance of fuzzy white, gray
+            or black mold that causes freshly sprouted seedlings to decay and collapse at the soil line. Collectively,
+            the conditions caused by these fungi are known as "damping-off" disease — a death sentence for baby plants.
+          </p>
+          <p>
+            Blue mold of tobacco, caused by <em>Peronospora hyoscyami</em> f.sp. <em>tabacina</em>, is a fungus-like
+            organism that is highly destructive to tobacco seed beds, transplants and production fields in the humid
+            farming zones of the southeastern and eastern United States, Canada, and countries bordering the Caribbean
+            basin.
+          </p>
+        </div>
+      </article>
+
+      <article class="rounded-2xl border-l-4 border-accent-500 bg-brand-50 p-8">
+        <h2 class="text-2xl font-bold tracking-tight text-brand-800 sm:text-3xl">The answer</h2>
+        <div class="mt-4 space-y-4 leading-relaxed text-slate-600">
+          <p>
+            From the data of a study conducted at the Pittsburgh "Burn" Lounge between May 24th and June 6th, 2022,
+            ActivePure® technology inactivated airborne <em>Aspergillus</em>/<em>Penicillium</em> mold
+            <strong class="font-semibold text-brand-700"> to zero</strong>.
+          </p>
+          <p>
+            ActivePure® technology greatly reduces mold and fungi levels to safeguard humidors and keep your product
+            fresher for longer. From a manufacturing standpoint, we can safeguard your seedlings in the indoor grow
+            space until they are ready to be transplanted into the field.
+          </p>
+        </div>
+      </article>
+
+      <figure class="rounded-2xl border border-slate-200 p-8">
+        <blockquote class="text-lg leading-relaxed text-slate-700">
+          <p>
+            "The Tobacco Company utilizes Germ Solutions USA — ActivePure® technology to safeguard my staff and clients
+            from COVID exposure, as well as our cigar investment within our humidors against the potential development
+            of mold and fungus."
+          </p>
+        </blockquote>
+        <figcaption class="mt-6 text-sm font-semibold text-brand-700">
+          Greg Zimmerman <span class="font-normal text-slate-500">— President, PCA</span>
+        </figcaption>
+      </figure>
+    </div>
+  </Section>
+
+  <CallToAction
+    title="Protect your humidor and your lounge"
+    lead="Tell us about your shop, lounge or seed beds and we will recommend the right configuration."
+  />
+</Base>

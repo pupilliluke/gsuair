@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  image?: ImageMetadata;
+  imageAlt?: string;
+  /** Taller treatment for the homepage. */
+  size?: 'default' | 'lg';
+}
+
+const { eyebrow, title, lead, image, imageAlt = '', size = 'default' } = Astro.props;
+---
+
+<section class="relative isolate overflow-hidden bg-brand-800">
+  {
+    image && (
+      <>
+        <Image
+          src={image}
+          alt={imageAlt}
+          widths={[640, 1024, 1600, 2000]}
+          sizes="100vw"
+          class="absolute inset-0 -z-10 h-full w-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="absolute inset-0 -z-10 bg-gradient-to-r from-brand-900/92 via-brand-800/80 to-brand-700/60"></div>
+      </>
+    )
+  }
+  <div class:list={['mx-auto max-w-7xl px-4 sm:px-6', size === 'lg' ? 'py-24 sm:py-32 lg:py-40' : 'py-16 sm:py-20']}>
+    <div class="max-w-3xl">
+      {eyebrow && <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent-400">{eyebrow}</p>}
+      <h1
+        class:list={[
+          'mt-3 font-bold tracking-tight text-white text-balance',
+          size === 'lg' ? 'text-4xl sm:text-5xl lg:text-6xl' : 'text-3xl sm:text-4xl lg:text-5xl',
+        ]}
+      >
+        {title}
+      </h1>
+      {lead && <p class="mt-6 max-w-2xl text-lg leading-relaxed text-brand-100 text-pretty">{lead}</p>}
+      <slot />
+    </div>
+  </div>
+</section>

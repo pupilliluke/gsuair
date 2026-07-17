@@ -1,0 +1,95 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import CallToAction from '../../components/CallToAction.astro';
+
+import educationHero from '../../assets/education-hero.jpg';
+import governmentHero from '../../assets/government-hero.jpg';
+import growroomHero from '../../assets/growroom-hero.jpg';
+import retailHero from '../../assets/retail-tobacco-field.jpg';
+import residencesHero from '../../assets/residences-hero.jpg';
+
+const industries = [
+  {
+    title: 'Education',
+    href: '/industries/education',
+    image: educationHero,
+    alt: 'Brick school building on a sunny day',
+    copy: 'Poor indoor air quality is linked to drowsiness, headaches, loss of concentration and asthma — and to absenteeism. Portable or HVAC-installed units protect classrooms without overhauling the building.',
+  },
+  {
+    title: 'Government Facilities',
+    href: '/industries/government-facilities',
+    image: governmentHero,
+    alt: 'Corridor inside a correctional facility',
+    copy: 'High occupancy, ageing HVAC and strict OSHA and EPA obligations. Purification plus real-time IAQ 360 monitoring for public buildings.',
+  },
+  {
+    title: 'Grow Rooms',
+    href: '/industries/manufacturing',
+    image: growroomHero,
+    alt: 'Cannabis cultivation grow room',
+    copy: 'High density and high humidity are a perfect storm for mold and mildew. Inactivate mold and fungi where they grow — up to a 6-log reduction.',
+  },
+  {
+    title: 'Retail: Cigar & Tobacco',
+    href: '/industries/retail',
+    image: retailHero,
+    alt: 'Tobacco field at harvest',
+    copy: 'Mold ruins the taste of cigars and kills tobacco seedlings. Safeguard humidors, lounges and indoor seed beds.',
+  },
+  {
+    title: 'Residences & Home Offices',
+    href: '/industries/residences',
+    image: residencesHero,
+    alt: 'A street of family homes at sunset',
+    copy: 'Americans spend up to 90% of their time indoors. Reduce dust, dander, allergens, odors and pollutants at home.',
+  },
+];
+---
+
+<Base
+  title="Industries"
+  description="ActivePure® air and surface purification for schools, government facilities, cannabis grow rooms, cigar and tobacco retail, and homes."
+>
+  <PageHero
+    eyebrow="Industries"
+    title="The solution for every indoor setting"
+    lead="The same technology, tuned to the demands of the space it protects — from a single classroom to an entire correctional facility."
+  />
+
+  <Section>
+    <ul class="grid gap-8 md:grid-cols-2">
+      {
+        industries.map((i) => (
+          <li>
+            <a
+              href={i.href}
+              class="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-lg"
+            >
+              <Image
+                src={i.image}
+                alt={i.alt}
+                widths={[400, 700, 1000]}
+                sizes="(min-width: 768px) 34rem, 100vw"
+                class="h-52 w-full object-cover"
+                loading="lazy"
+              />
+              <div class="flex flex-1 flex-col p-7">
+                <h2 class="text-xl font-semibold text-brand-700">{i.title}</h2>
+                <p class="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600">{i.copy}</p>
+                <span class="mt-5 text-sm font-semibold text-brand-500 transition-transform group-hover:translate-x-0.5">
+                  Learn more <span aria-hidden="true">→</span>
+                </span>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <CallToAction />
+</Base>

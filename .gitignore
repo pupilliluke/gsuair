@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+.astro/
+.output/
+
+# env
+.env
+.env.production
+.env.local
+
+# host / editor
+.netlify/
+.vercel/
+.DS_Store
+Thumbs.db
+*.log
+.history/
+.claude/settings.local.json
+
+# scratch
+site/shots.mjs
+site/logocheck.mjs
+gsuair/gsuair-assets/contact-sheet.png
+gsuair/gsuair-assets/*.txt

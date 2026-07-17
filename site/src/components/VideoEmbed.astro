@@ -1,0 +1,24 @@
+---
+interface Props {
+  /** Full embed URL, e.g. https://player.vimeo.com/video/1047595425?h=... */
+  src: string;
+  title: string;
+  caption?: string;
+}
+
+const { src, title, caption } = Astro.props;
+---
+
+<figure class="mx-auto max-w-4xl">
+  <div class="aspect-video overflow-hidden rounded-2xl bg-brand-900 shadow-xl ring-1 ring-brand-900/10">
+    <iframe
+      src={src}
+      title={title}
+      class="h-full w-full"
+      loading="lazy"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+      allowfullscreen></iframe>
+  </div>
+  {caption && <figcaption class="mt-4 text-center text-sm leading-relaxed text-slate-600">{caption}</figcaption>}
+</figure>

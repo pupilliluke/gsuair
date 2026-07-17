@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import { NAV, BUSINESS } from '../consts';
+
+const year = new Date().getFullYear();
+const mapQuery = encodeURIComponent(`${BUSINESS.street}, ${BUSINESS.city}, ${BUSINESS.state} ${BUSINESS.zip}`);
+---
+
+<footer class="bg-brand-700 text-brand-100">
+  <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+    <div class="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
+      <div>
+        <!-- Logo artwork is dark-on-transparent, so it sits on a light chip here. -->
+        <div class="inline-block rounded-lg bg-white px-4 py-3">
+          <Image src={logo} alt={BUSINESS.name} height={34} densities={[1, 2]} class="h-8 w-auto" loading="lazy" />
+        </div>
+        <p class="mt-5 max-w-sm text-sm leading-relaxed text-brand-200">
+          Independent dealer of Beyond by Aerus, featuring ActivePure® technology — air and surface purification for the
+          spaces we share.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-white">Explore</h2>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          {
+            NAV.map((item) => (
+              <li>
+                <a href={item.children ? item.children[0].href : item.href} class="transition-colors hover:text-white">
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-white">Contact</h2>
+        <address class="mt-4 space-y-2.5 text-sm not-italic">
+          <p class="font-semibold text-white">{BUSINESS.name}</p>
+          <p>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="transition-colors hover:text-white"
+            >
+              {BUSINESS.street}<br />
+              {BUSINESS.city}, {BUSINESS.state} {BUSINESS.zip}
+            </a>
+          </p>
+          <p>
+            <a href={`tel:${BUSINESS.phoneHref}`} class="transition-colors hover:text-white">{BUSINESS.phone}</a>
+          </p>
+          <p>
+            <a href={`mailto:${BUSINESS.email}`} class="break-all transition-colors hover:text-white">{BUSINESS.email}</a>
+          </p>
+          <p class="text-brand-300">{BUSINESS.hoursShort}</p>
+        </address>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-brand-600 pt-6 text-xs text-brand-300">
+      <p>&copy; {year} {BUSINESS.name}. All rights reserved.</p>
+      <p class="mt-2">
+        ActivePure® is a registered trademark of ActivePure Technologies. Beyond by Aerus is a trademark of Aerus LLC.
+      </p>
+    </div>
+  </div>
+</footer>

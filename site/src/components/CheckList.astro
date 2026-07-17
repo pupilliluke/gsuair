@@ -1,0 +1,32 @@
+---
+interface Props {
+  items: string[];
+  /** 'check' for benefits, 'dot' for neutral facts/symptoms. */
+  marker?: 'check' | 'dot';
+  columns?: 1 | 2;
+  class?: string;
+}
+
+const { items, marker = 'check', columns = 1, class: className = '' } = Astro.props;
+---
+
+<ul class:list={['space-y-3.5', columns === 2 && 'sm:columns-2 sm:gap-x-10 sm:space-y-0', className]}>
+  {
+    items.map((item) => (
+      <li class:list={['flex gap-3 text-slate-700', columns === 2 && 'break-inside-avoid pb-3.5']}>
+        {marker === 'check' ? (
+          <svg class="mt-1 h-4 w-4 shrink-0 text-accent-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path
+              fill-rule="evenodd"
+              d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0l-3.5-3.5a1 1 0 1 1 1.4-1.4l2.8 2.79 6.8-6.79a1 1 0 0 1 1.4 0Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        ) : (
+          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-400" aria-hidden="true" />
+        )}
+        <span class="leading-relaxed" set:html={item} />
+      </li>
+    ))
+  }
+</ul>

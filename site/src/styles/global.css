@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+
+/*
+  Brand palette. The blue is sampled from the logo artwork itself (#305f93),
+  which matches the old site's theme-color meta (#2f6594). Red is the wordmark
+  red; green is the accent already used across the company's own info graphics.
+*/
+@theme {
+  --color-brand-50: #f2f6fa;
+  --color-brand-100: #e2ebf4;
+  --color-brand-200: #c5d7e8;
+  --color-brand-300: #97b6d4;
+  --color-brand-400: #628fbb;
+  --color-brand-500: #2f6594;
+  --color-brand-600: #2a5a85;
+  --color-brand-700: #22496b;
+  --color-brand-800: #1b3a55;
+  --color-brand-900: #142c41;
+
+  --color-accent-400: #5fb36e;
+  --color-accent-500: #4a9d5b;
+  --color-accent-600: #3d8349;
+
+  --color-signal-600: #a00808;
+
+  --font-display: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Visible focus ring for keyboard users on every interactive element. */
+:focus-visible {
+  outline: 3px solid var(--color-brand-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}

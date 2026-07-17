@@ -1,0 +1,105 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
+import CallToAction from '../../components/CallToAction.astro';
+import CheckList from '../../components/CheckList.astro';
+
+import residencesHero from '../../assets/residences-hero.jpg';
+
+// All three lists below were previously baked into PNGs on the live site
+// (FACTS REDISENTS PAGE.png, RESIDENTS PAGE BENEFITS OF SYSTEM.png, blob-635bbd0.png).
+// Recovered here as real text: searchable, translatable, screen-reader friendly.
+const symptoms = [
+  'Irritation of the eyes, nose or throat',
+  'Headaches, dizziness or fatigue',
+  'Consistent sneezing from allergens',
+  'Breathing issues; respiratory diseases',
+  'Asthma',
+];
+
+const benefits = [
+  'Works 24/7 in spaces occupied by people and pets',
+  'Reduces airborne and surface contaminants',
+  'Eliminates harmful dust, dander and allergens from your air',
+  'Purifies surfaces from airborne contaminants',
+  'Reduces or eliminates odors',
+  'Reduces harmful gases',
+  'Keeps people from recontamination',
+  'Enhances health and quality of life',
+];
+
+const facts = [
+  'Around 3 million deaths per year are attributed to household air pollution',
+  'Almost half of all pneumonia deaths in children under 5 are linked to household air pollution',
+  'Poor indoor air quality is linked to respiratory issues like asthma, lung cancer and cardiovascular disease, and an increased risk of infections — especially in children and the elderly',
+  'Indoor air can sometimes be more polluted than outdoor air, because contaminants outdoors have endless space to dissipate and homes do not',
+  'Indoor concentrations of some pollutants have increased in recent decades due to factors such as energy-efficient building construction, personal care products, pesticides and household cleaners',
+];
+---
+
+<Base
+  title="Residences & Home Offices"
+  description="Reduce dust, dander, allergens, odors and pollutants at home. Aerus air purifiers for residences and home offices, featuring ActivePure® technology."
+>
+  <PageHero
+    eyebrow="Residences & Home Offices"
+    title="Homes contain dust, pollutants & allergens"
+    lead="Americans now spend up to 90% of their time indoors, and 22 million U.S. adults work entirely from home. The air in that space matters more than it ever has."
+    image={residencesHero}
+    imageAlt="A street of family homes at sunset"
+  />
+
+  <Section>
+    <div class="mx-auto max-w-3xl">
+      <p class="text-lg leading-relaxed text-slate-600">
+        The COVID epidemic, combined with the increase in time Americans spend in their homes, are the biggest
+        contributing factors to the importance of purifying indoor air. Common sources of indoor air pollution include
+        cooking with polluting fuels, smoking, building materials, cleaning products, mold, pet dander and poor
+        ventilation.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-2">
+      <div class="rounded-2xl border border-slate-200 p-8">
+        <h2 class="text-xl font-semibold text-brand-800">Symptoms caused by poor indoor air quality</h2>
+        <CheckList items={symptoms} marker="dot" class="mt-6" />
+      </div>
+      <div class="rounded-2xl border border-accent-500/30 bg-accent-500/5 p-8">
+        <h2 class="text-xl font-semibold text-brand-800">Indoor air purification system benefits</h2>
+        <CheckList items={benefits} class="mt-6" />
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="tint" eyebrow="A real story" title="When the air outside comes inside" align="center">
+    <div class="mt-12">
+      <VideoEmbed
+        src="https://player.vimeo.com/video/1051369131?h=29bb480f3f"
+        title="East Palestine family story"
+        caption="Beyond Guardian Air solves siblings' breathing issues that arose in their home from the disaster in East Palestine, Ohio. Their mother shares her story."
+      />
+    </div>
+  </Section>
+
+  <Section>
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight text-brand-800 sm:text-4xl text-balance">The facts</h2>
+        <p class="mt-4 leading-relaxed text-slate-600">
+          Aerus air purifiers for homes and home offices help remove contaminants such as bacteria and pollutants from
+          indoor air. The system also reduces allergens, which is especially significant for those with asthma and other
+          breathing issues.
+        </p>
+        <p class="mt-6 text-sm text-slate-500">Sources: The World Health Organization; The EPA</p>
+      </div>
+      <CheckList items={facts} marker="dot" />
+    </div>
+  </Section>
+
+  <CallToAction
+    title="Speak with a member of our team today"
+    lead="We can help you choose the best purifier for your home — tell us about your space."
+  />
+</Base>
